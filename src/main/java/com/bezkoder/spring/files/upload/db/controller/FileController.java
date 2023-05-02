@@ -40,8 +40,13 @@ public class FileController {
       message = "Could not upload the file: " + file.getOriginalFilename() + "!";
       return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new ResponseMessage(message));
     }
+    
+    
   }
-
+  @GetMapping("/name")
+  public String name() {
+  	return "viki";
+  }
   @GetMapping("/files")
   public ResponseEntity<List<ResponseFile>> getListFiles() {
     List<ResponseFile> files = storageService.getAllFiles().map(dbFile -> {
